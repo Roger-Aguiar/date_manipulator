@@ -1,5 +1,5 @@
 export class DateManipulator {
-    constructor(private fullDate?: string, private sumYear?: number, private sumMonth?: number, private sumDay?: number){}
+  constructor(private usa?: boolean, private br?: boolean, private fullDate?: string, private sumYear?: number, private sumMonth?: number, private sumDay?: number){}
 
   getNewUnitedStatesDate(): string {
     let date = new Date();
@@ -21,41 +21,71 @@ export class DateManipulator {
     return fullDate;
   }
 
-  addYearsToUnitedStatesDate(): string{
+  addYearsToDate(): string{
     let fullDateSplit = this.fullDate.split("-");    
+
     return `${fullDateSplit[0]}-${fullDateSplit[1]}-${(+fullDateSplit[2] + this.sumYear).toString()}`      
   }
 
-  addMonthsToUnitedStatesDate(): string{
+  addMonthsToDate(): string{
     let fullDateSplit = this.fullDate.split("-");
     
-    let month: number = +fullDateSplit[0] + this.sumMonth;
-    let numberOfDaysInMonth: number = new Date(2022, month, 0).getDate();
-    let day: number = (+fullDateSplit[1] == 31) ? numberOfDaysInMonth : +fullDateSplit[1];
-    let year: number = +fullDateSplit[2];
-
+    let month: number;
+    let numberOfDaysInMonth: number;
+    let day: number;
+    let year: number;
     let date: string = "";
+
+    if (this.usa == true) {
+      month = +fullDateSplit[0] + this.sumMonth;
+      numberOfDaysInMonth = new Date(+fullDateSplit[2], month, 0).getDate();
+      day = (+fullDateSplit[1] == 31) ? numberOfDaysInMonth : +fullDateSplit[1];
+      year = +fullDateSplit[2];
+    } else {
+      month = +fullDateSplit[1] + this.sumMonth;
+      numberOfDaysInMonth = new Date(+fullDateSplit[2], month, 0).getDate();
+      day = (+fullDateSplit[0] == 31) ? numberOfDaysInMonth : +fullDateSplit[0];
+      year = +fullDateSplit[2];
+    }
       
     if (month > 12) {
-      date = `${((month - 12) < 10 ? "0" + (month - 12).toString() : (month - 12).toString())}-${(day) < 10 ? "0" + day.toString() : day.toString()}-${(year + 1).toString()}`
+      date = this.usa == true ? `${((month - 12) < 10 ? "0" + (month - 12).toString() : (month - 12).toString())}-${(day) < 10 ? "0" + day.toString() : day.toString()}-${(year + 1).toString()}` : 
+      `${(day) < 10 ? "0" + day.toString() : day.toString()}-${((month - 12) < 10 ? "0" + (month - 12).toString() : (month - 12).toString())}-${(year + 1).toString()}`
     }else if (month < 12) {
-      date = `${(month) < 10 ? "0" + month.toString() : month.toString()}-${(day) < 10 ? "0" + day.toString() : day.toString()}-${year.toString()}`
+      date = this.usa == true ? `${(month) < 10 ? "0" + month.toString() : month.toString()}-${(day) < 10 ? "0" + day.toString() : day.toString()}-${year.toString()}` :
+      `${(day) < 10 ? "0" + day.toString() : day.toString()}-${(month) < 10 ? "0" + month.toString() : month.toString()}-${year.toString()}`
     }else if (month == 12) {
-      date = `${(month) < 10 ? "0" + month.toString() : month.toString()}-${(day) < 10 ? "0" + day.toString() : day.toString()}-${year.toString()}`
+      date = this.usa == true ? `${(month) < 10 ? "0" + month.toString() : month.toString()}-${(day) < 10 ? "0" + day.toString() : day.toString()}-${year.toString()}` : 
+      `${(day) < 10 ? "0" + day.toString() : day.toString()}-${(month) < 10 ? "0" + month.toString() : month.toString()}-${year.toString()}`
     }
     return date;
   }
 
-  addDaysToUnitedStatesDate(): string{
+  addDaysToDate(): string{
     let fullDateSplit = this.fullDate.split("-");
-    return `${fullDateSplit[0]}-${(+fullDateSplit[1] + this.sumDay).toString()}-${fullDateSplit[2].toString()}`      
-  }
+    let month: number;
+    let numberOfDaysInMonth: number;
+    let day: number;
+    let year: number;
+    let date: string = "";
 
-  addYearsToBrazilianDate(): string{
-    let fullDateSplit = this.fullDate.split("-");    
-    return `${fullDateSplit[0]}-${fullDateSplit[1]}-${(+fullDateSplit[2] + this.sumYear).toString()}`      
+    if (this.usa == true) {
+      //numberOfDaysInMonth = new Date(+fullDateSplit[2], +fullDateSplit[0], 0).getDate();      
+      numberOfDaysInMonth = new Date(+fullDateSplit[2], +fullDateSplit[0], 0).getDate();
+      month = +fullDateSplit[1] + this.sumDay > numberOfDaysInMonth ? +fullDateSplit[0] + 1 : +fullDateSplit[0];
+      year = month > 12 ? +fullDateSplit[2] + 1 : +fullDateSplit[2];
+      month = month > 12 ? month - 12 : month;
+      day = +fullDateSplit[1] + this.sumDay > numberOfDaysInMonth ? (+fullDateSplit[1] + this.sumDay) - numberOfDaysInMonth : +fullDateSplit[1] + this.sumDay;
+      
+      date = `${month < 10 ? "0" + month.toString() : month.toString()}-${day < 10 ? "0" + day.toString() : day.toString()}-${year}`;
+    } else {
+      numberOfDaysInMonth = new Date(+fullDateSplit[2], +fullDateSplit[1], 0).getDate();
+      month = +fullDateSplit[0] + this.sumDay > numberOfDaysInMonth ? +fullDateSplit[1] + 1 : +fullDateSplit[1];
+      year = month > 12 ? +fullDateSplit[2] + 1 : +fullDateSplit[2];
+      month = month > 12 ? month - 12 : month;
+      day = +fullDateSplit[0] + this.sumDay > numberOfDaysInMonth ? (+fullDateSplit[0] + this.sumDay) - numberOfDaysInMonth : +fullDateSplit[0] + this.sumDay;
+      date = `${day < 10 ? "0" + day.toString() : day.toString()}-${month < 10 ? "0" + month.toString() : month.toString()}-${year}`;
+    }    
+    return date;
   }
 }
-
-//This code gets the number of days in a specified month, the second parameter is the month, in this case, February
-//console.log(new Date(2022, 2, 0).getDate())
