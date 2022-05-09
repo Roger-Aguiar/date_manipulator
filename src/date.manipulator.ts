@@ -1,34 +1,25 @@
 export class DateManipulator {
-  constructor(private usa?: boolean, private br?: boolean, private fullDate?: string, private sumYear?: number, private sumMonth?: number, private sumDay?: number){}
+  private characters: any = /[\s-./ ,]+/;
 
-  getNewUnitedStatesDate(): string {
+  constructor(
+    private usa?: boolean, private br?: boolean, private fullDate?: string, private sumYear?: number, private sumMonth?: number, private sumDay?: number){}
+
+  getNewDate(): string {
     let date = new Date();
     let month: string = date.getMonth() < 10 ? "0" + (date.getMonth() + 1).toString() : date.getMonth().toString();
     let day: string = date.getDate() < 10 ? "0" + date.getDate().toString() : date.getDate().toString();
     let year: string = date.getFullYear().toString();
-    let fullDate = `${month}-${day}-${year}`;
-
+    let fullDate: string = this.usa == true?  `${month}-${day}-${year}` : `${day}-${month}-${year}`;
     return fullDate;
   }
-
-  getNewBrazilianDate(): string {
-    let date = new Date();
-    let month: string = date.getMonth() < 10 ? "0" + (date.getMonth() + 1).toString() : date.getMonth().toString();
-    let day: string = date.getDate() < 10 ? "0" + date.getDate().toString() : date.getDate().toString();
-    let year: string = date.getFullYear().toString();
-    let fullDate = `${day}-${month}-${year}`;
-
-    return fullDate;
-  }
-
-  addYearsToDate(): string{
-    let fullDateSplit = this.fullDate.split("-");    
-
+  
+  addYearsToDate(): string{    
+    let fullDateSplit = this.fullDate.split(this.characters);
     return `${fullDateSplit[0]}-${fullDateSplit[1]}-${(+fullDateSplit[2] + this.sumYear).toString()}`      
   }
 
   addMonthsToDate(): string{
-    let fullDateSplit = this.fullDate.split("-");
+    let fullDateSplit = this.fullDate.split(this.characters);
     
     let month: number;
     let numberOfDaysInMonth: number;
@@ -62,21 +53,19 @@ export class DateManipulator {
   }
 
   addDaysToDate(): string{
-    let fullDateSplit = this.fullDate.split("-");
+    let fullDateSplit = this.fullDate.split(this.characters);
     let month: number;
     let numberOfDaysInMonth: number;
     let day: number;
     let year: number;
     let date: string = "";
 
-    if (this.usa == true) {
-      //numberOfDaysInMonth = new Date(+fullDateSplit[2], +fullDateSplit[0], 0).getDate();      
+    if (this.usa == true) {           
       numberOfDaysInMonth = new Date(+fullDateSplit[2], +fullDateSplit[0], 0).getDate();
       month = +fullDateSplit[1] + this.sumDay > numberOfDaysInMonth ? +fullDateSplit[0] + 1 : +fullDateSplit[0];
       year = month > 12 ? +fullDateSplit[2] + 1 : +fullDateSplit[2];
       month = month > 12 ? month - 12 : month;
       day = +fullDateSplit[1] + this.sumDay > numberOfDaysInMonth ? (+fullDateSplit[1] + this.sumDay) - numberOfDaysInMonth : +fullDateSplit[1] + this.sumDay;
-      
       date = `${month < 10 ? "0" + month.toString() : month.toString()}-${day < 10 ? "0" + day.toString() : day.toString()}-${year}`;
     } else {
       numberOfDaysInMonth = new Date(+fullDateSplit[2], +fullDateSplit[1], 0).getDate();

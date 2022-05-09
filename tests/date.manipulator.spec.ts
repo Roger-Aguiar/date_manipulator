@@ -1,8 +1,7 @@
 import { DateManipulator } from "../src/date.manipulator";
 
 describe("Date Manipulator Tests", () => {
-  let dateManipulator;  
-  let daysUSA = "05-12-2022";
+  let dateManipulator;
       
   beforeEach(() => {
     dateManipulator = new DateManipulator();
@@ -10,7 +9,8 @@ describe("Date Manipulator Tests", () => {
 
   describe("Tests for the USA date format", () => {
     it("Should return a new date in the USA format", () => {
-      expect(dateManipulator.getNewUnitedStatesDate()).not.toBeNull();
+      let dateManipulator = new DateManipulator(true);
+      expect(dateManipulator.getNewDate()).not.toBeNull();
     });
 
     it("Should add a specified value into the year and return the new value when date is in the USA format", () => {
@@ -20,25 +20,14 @@ describe("Date Manipulator Tests", () => {
 
     it("Should add a specified value into the day and return the new value when date is in the USA format", () => {
         dateManipulator = new DateManipulator(true, false, "05-07-2022", 0, 0, 5);
-        expect(dateManipulator.addDaysToDate()).toBe(daysUSA);
-    });
-    //******* */
-    fit("Should add 12 days when current date is 05/25/2022 and return 06/06/2022 when this date is in the Brazilian format", () => {
-      dateManipulator = new DateManipulator(false, true, "05-25-2022", 0, 0, 12);
-      expect(dateManipulator.addDaysToDate()).toBe("06-06-2022");
+        expect(dateManipulator.addDaysToDate()).toBe("05-12-2022");
     });
 
-    it("Should add 12 days when current date is 25/12/2022 and return 01/01/2023 when this date is in the Brazilian format", () => {
-      dateManipulator = new DateManipulator(false, true, "25-12-2022", 0, 0, 12);
-      expect(dateManipulator.addDaysToDate()).toBe("06-01-2023");
+    it("Should add 12 days when current date is 02/25/2022 and return 03/09/2023 when this date is in the USA format", () => {
+      dateManipulator = new DateManipulator(true, false, "02-25-2022", 0, 0, 12);
+      expect(dateManipulator.addDaysToDate()).toBe("03-09-2022");
     });
-
-    it("Should add 12 days when current date is 25/12/2022 and return 01/01/2023 when this date is in the Brazilian format", () => {
-      dateManipulator = new DateManipulator(false, true, "25-02-2022", 0, 0, 12);
-      expect(dateManipulator.addDaysToDate()).toBe("09-03-2022");
-    });
-    //********* */
-
+            
     it("Should add a specified value into the month and return the new value when date is in the USA format", () => {
         dateManipulator = new DateManipulator(true, false, "05-07-2022", 0, 5);
       expect(dateManipulator.addMonthsToDate()).toBe("10-07-2022");
@@ -61,8 +50,9 @@ describe("Date Manipulator Tests", () => {
   });
 
   describe("Tests for Brazil date format", () => {
-    it("Should return a new date in Brazilian format", () => {
-      expect(dateManipulator.getNewBrazilianDate()).not.toBeNull();
+    it("Should return a new date in the USA format", () => {
+      let dateManipulator = new DateManipulator(false, true);
+      expect(dateManipulator.getNewDate()).not.toBeNull();
     });
 
     it("Should add a specified value into the year and return the new value when date is in the Brazilian format", () => {
