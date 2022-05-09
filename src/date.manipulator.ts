@@ -19,8 +19,7 @@ export class DateManipulator {
   }
 
   addMonthsToDate(): string{
-    let fullDateSplit = this.fullDate.split(this.characters);
-    
+    let fullDateSplit = this.fullDate.split(this.characters);    
     let month: number;
     let numberOfDaysInMonth: number;
     let day: number;
