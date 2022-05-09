@@ -1,5 +1,5 @@
 {
-  "name": "@my-org/date_manipulator",
+  "name": "date_operations_manipulator",
   "version": "1.0.0",
   "description": "This package contains methodos to manipulate operations with date.",
   "main": "index.js",
