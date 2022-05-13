@@ -1,4 +1,4 @@
-import { DateManipulator } from "../src/date.manipulator";
+import { DateManipulator } from "../src/date.operations.manipulator2";
 
 describe("Date Manipulator Tests", () => {
   let dateManipulator;

@@ -1,4 +1,4 @@
-import { DateManipulator } from "./src/date.manipulator";
+import { DateManipulator } from "./src/date.operations.manipulator2";
 let usa = new DateManipulator(true);
 let br = new DateManipulator(false, true);
 let currentUSAdate = usa.getNewDate();
