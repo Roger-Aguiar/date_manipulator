@@ -28,5 +28,8 @@
     "babel-jest": "^28.1.0",
     "jest": "^28.1.0",
     "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "date_manipulator": "file:out/src"
   }
 }
