@@ -4,8 +4,14 @@ This package was developed to manipulate dates in the USA and Brazilian format.
 
 Instructions:
 
-First of all, install the package:
+First of all, create a package.json:
+npm init -y
+
+Install the package:
 npm i --save-dev date_operations_manipulator2
+
+Run the following command:
+npm install @types/node --save-dev
 
 NOTE: You can just copy and paste the following codes to see how each one works.
 
