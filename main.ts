@@ -1,59 +1,76 @@
 import { DateManipulator } from "./src/date.operations.manipulator2";
-let usa = new DateManipulator(true);
-let br = new DateManipulator(false, true);
+import { Parameters } from "./src/parameters";
+
+let usaParameters = new Parameters();
+let brazilianParameters = new Parameters();
+
+//It sets the parameters to generate a new USA date format
+usaParameters.usa = true;
+let usa = new DateManipulator(usaParameters);
+
+//It sets the parameters to generate a new Brazilian date format
+let br = new DateManipulator(brazilianParameters);
+
 let currentUSAdate = usa.getNewDate();
 let currentBrDate = br.getNewDate();
+
+console.log(`Current USA Date: ${currentUSAdate}`);
+console.log(`Current Brazilian Date: ${currentBrDate}`);
 
 //It adds one more year - USA
 console.log("\nIt adds 3 years - USA");
 console.log(`Current date: ${currentUSAdate}`);
-usa = new DateManipulator(true, false, currentUSAdate, 3);
+//It sets the parameters
+usaParameters.usa = true;
+usaParameters.fullDate = currentUSAdate;
+usaParameters.sumYear = 3
+usa = new DateManipulator(usaParameters);
 console.log(`3 more years: ${usa.addYearsToDate()}`);
 
 //It adds one more year - Brazil
 console.log("\nIt adds 3 years - Brazil");
 console.log(`Current date: ${currentBrDate}`);
-br = new DateManipulator(false, true, currentBrDate, 3);
+//It sets the parameters
+brazilianParameters.brazil = true;
+brazilianParameters.fullDate = currentBrDate;
+brazilianParameters.sumYear = 3
+br = new DateManipulator(brazilianParameters);
 console.log(`3 more years: ${br.addYearsToDate()}`);
 
 //It adds 5 days - USA
 console.log("\nIt adds 5 days - USA");
-usa = new DateManipulator(true, false, currentUSAdate, 0, 0, 5);
+usaParameters.usa = true;
+usaParameters.sumDay = 5
+usa = new DateManipulator(usaParameters);
 console.log(`Current date: ${currentUSAdate}`);
 console.log(`5 more days: ${usa.addDaysToDate()}`);
 
 //It adds 5 days - Brazil
 console.log("\nIt adds 5 days - Brazil");
-br = new DateManipulator(false, true, currentBrDate, 0, 0, 5);
+brazilianParameters.brazil = true;
+brazilianParameters.sumDay = 5;
+br = new DateManipulator(brazilianParameters);
 console.log(`Current date: ${currentBrDate}`);
 console.log(`5 more days: ${br.addDaysToDate()}`);
 
-//It adds 15 days when month is 02/25/2022 (February) - USA
-console.log("\nIt adds 15 days when month is 02/25/2022 - USA");
-usa = new DateManipulator(true, false, "02-25-2022", 0, 0, 15);
-console.log("Current date: 02-25-2022");
-console.log(`15 more days: ${usa.addDaysToDate()}`);
-
-//It adds 15 days when month is 25/02/2022 (February) - Brazil
-console.log("\nIt adds 15 days when month is 25/02/2022 - Brazil");
-br = new DateManipulator(false, true, "25-02-2022", 0, 0, 15);
-console.log("Current date: 25-02-2022");
-console.log(`15 more days: ${br.addDaysToDate()}`);
-
 //It adds 5 months when date is 05/09/2022 - USA
-console.log("\nIt adds 5 months when date is 05/09/2022 - USA");
-usa = new DateManipulator(true, false, currentUSAdate, 0, 5, 0);
+console.log("\nIt adds 5 months - USA");
+usaParameters.usa = true;
+usaParameters.sumMonth = 5;
+usa = new DateManipulator(usaParameters);
 console.log(`Current date: ${currentUSAdate}`);
 console.log(`5 more months: ${usa.addMonthsToDate()}`);
 
 //It adds 5 months when date is 09/05/2022 - Brazil
-console.log("\nIt adds 5 months when date is 09/05/2022 - Brazil");
-usa = new DateManipulator(false, true, currentBrDate, 0, 5, 0);
+console.log("\nIt adds 5 months - Brazil");
+brazilianParameters.brazil = true;
+brazilianParameters.sumMonth = 5
+usa = new DateManipulator(brazilianParameters);
 console.log(`Current date: ${currentBrDate}`);
 console.log(`5 more months: ${usa.addMonthsToDate()}`);
 
 //It adds 6 months whend date is 12/21/2022 and returns 06/21/2023
-console.log("\nIt adds 6 months when date is 12/21/2022 and returns 06/21/2023 - USA");
+/*console.log("\nIt adds 6 months when date is 12/21/2022 and returns 06/21/2023 - USA");
 usa = new DateManipulator(true, false, "12-21-2022", 0, 6);
 console.log(`Current date: "12-21-2022"`);
 console.log(`6 more months: ${usa.addMonthsToDate()}`);
@@ -98,4 +115,4 @@ console.log(`5 more months: ${usa.addMonthsToDate()}`);
 console.log("\nIt adds 5 months when month is equal 15/11/2022 and return 15/04/2023 - Brazil");
 usa = new DateManipulator(false, true, "15,11,2022", 0, 5, 0);
 console.log(`Current date: "15-11-2022"`);
-console.log(`5 more months: ${usa.addMonthsToDate()}`);
+console.log(`5 more months: ${usa.addMonthsToDate()}`);*/
