@@ -1,61 +1,75 @@
-https://docs.npmjs.com/about-package-readme-files
+This package was developed to manipulate dates in the USA and Brazilian format.<br />
 
-This package was developed to manipulate dates in the USA and Brazilian format.
+<h1>Instructions:</h1>
 
-Instructions:
+First of all, create a package.json:<br />
+npm init -y<br />
 
-First of all, create a package.json:
-npm init -y
+Install the package:<br />
+npm i --save-dev date_operations_manipulator2<br />
 
-Install the package:
-npm i --save-dev date_operations_manipulator2
+Run the following command:<br />
+npm install @types/node --save-dev<br />
 
-Run the following command:
-npm install @types/node --save-dev
+<p>NOTE: You can just copy and paste the following codes to see how each one works.</p>
 
-NOTE: You can just copy and paste the following codes to see how each one works.
+<h2>After this, you can import the package into your project</h2>
+<p>const dateManipulator = require('date_operations_manipulator2');</p>
 
-After this, you can import the package into your project:
-const dateManipulator = require('date_operations_manipulator2');
+<h4>Now you can use the series of available methods in the package. Available operations:</h4>
 
-Now you can use the series of available methods in the package. Available operations:
+<h2>DateManipulator parameters</h2>
 
-DateManipulator parameters:
-usa: boolean       //true for USA date format 
-br: boolean       //true for Brazilian date format
-fullDate: string  //It receives a date in a string format
-sumYear: number   //It receives an integer representing how many years will be added into the date
-sumMonth: number  //It receives an integer representing how many months will be added into the date
-sumDay: number     //It receives an integer representing how many days will be added into the date
+<b>Note: This package does not use parameters, it contains a property called<br />"parameters" which is used to pass the values to the class.</b>
 
-//It creates an object to get the USA date format: 
-let usa = new dateManipulator.DateManipulator(true);
-let currentUSAdate = usa.getNewDate();
+<p>usa: boolean      //true for USA date format </p>
+<p>brazil: boolean   //true for Brazilian date format</p>
+<p>fullDate: string  //It receives a date in a string format</p>
+<p>sumYear: number   //It receives an integer representing how many years will be added into the date</p>
+<p>sumMonth: number  //It receives an integer representing how many months will be added into the date</p>
+<p>sumDay: number    //It receives an integer representing how many days will be added into the date</p>
 
-//It creates an object to get the Brazilian date format: 
-let br = new dateManipulator.DateManipulator(false, true);
-let currentBrDate = br.getNewDate();
+<h3>It creates an object to get the USA date format</h3>
+let usa = new dateManipulator.DateManipulator();<br />
+usa.parameters.usa = true;<br />
+let currentUSAdate = usa.getNewDate();<br />
 
-//It adds three more years in the USA date format: 
-usa = new dateManipulator.DateManipulator(true, false, currentUSAdate, 3);
-console.log(`3 more years: ${usa.addYearsToDate()}`);
+<h3>It creates an object to get the Brazilian date format</h3>
+let br = new dateManipulator.DateManipulator();<br />
+br.parameters.brazil = true;<br />
+let currentBrDate = br.getNewDate();<br />
 
-//It adds one more year at Brazilian date format: 
-br = new dateManipulator.DateManipulator(false, true, currentBrDate, 3);
-console.log(`3 more years: ${br.addYearsToDate()}`);
+<h3>It adds three more years in the USA date format</h3>
+usa.parameters.fullDate = currentUSAdate;<br />
+usa.parameters.sumYear = 3;<br />
+console.log(`3 more years: ${usa.addYearsToDate()}`);<br />
 
-//It adds 5 days in the USA date format: 
-usa = new dateManipulator.DateManipulator(true, false, currentUSAdate, 0, 0, 5);
-console.log(`5 more days: ${usa.addDaysToDate()}`);
+<h3>It adds one more year at Brazilian date format</h3>
+br.parameters.brazil = true;<br />
+br.parameters.fullDate = currentBrDate;<br />
+br.parameters.sumYear = 1;<br />
+console.log(`3 more years: ${br.addYearsToDate()}`);<br />
 
-//It adds 5 days at Brazilian date format: 
-br = new dateManipulator.DateManipulator(false, true, currentBrDate, 0, 0, 5);
-console.log(`5 more days: ${br.addDaysToDate()}`);
+<h3>It adds 5 days in the USA date format</h3>
+usa.parameters.usa = true;<br />
+usa.parameters.fullDate = currentUSAdate;<br />
+usa.parameters.sumDay = 5;<br />
+console.log(`5 more days: ${usa.addDaysToDate()}`);<br />
 
-//It adds 5 months in the USA date format: 
-usa = new dateManipulator.DateManipulator(true, false, currentUSAdate, 0, 5, 0);
-console.log(`5 more months: ${usa.addMonthsToDate()}`);
+<h3>It adds 5 days at Brazilian date format: </h3>
+br.parameters.brazil = true;<br />
+br.parameters.fullDate = currentBrDate;<br />
+br.parameters.sumDay = 5;<br />
+console.log(`5 more days: ${br.addDaysToDate()}`);<br />
 
-//It adds 5 months when at Brazilian date format: 
-br = new dateManipulator.DateManipulator(false, true, currentBrDate, 0, 5, 0);
-console.log(`5 more months: ${usa.addMonthsToDate()}`);
+<h3>It adds 5 months in the USA date format</h3>
+usa.parameters.usa = true;<br />
+usa.parameters.sumMonth = 5;<br />
+usa.parameters.fullDate = currentUSAdate;<br />
+console.log(`5 more months: ${usa.addMonthsToDate()}`);<br />
+
+<h3>It adds 5 months when at Brazilian date format</h3>
+br.parameters.brazil = true;<br />
+br.parameters.sumMonth = 5;<br />
+br.parameters.fullDate = currentBrDate;<br />
+console.log(`5 more months: ${br.addMonthsToDate()}`);
