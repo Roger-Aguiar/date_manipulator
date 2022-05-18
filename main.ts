@@ -33,7 +33,7 @@ console.log(`3 more years: ${brazil.addYearsToDate()}`);
 
 //It adds 5 days - USA
 console.log("\nIt adds 5 days - USA");
-usa.parameters.sumDay = 5
+usa.parameters.sumDay = 5;
 console.log(`Current date: ${currentUSAdate}`);
 console.log(`5 more days: ${usa.addDaysToDate()}`);
 

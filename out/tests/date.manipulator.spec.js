@@ -23,35 +23,35 @@ describe("Date Manipulator Tests", () => {
             dateManipulator.parameters.fullDate = "05-07-2022";
             expect(dateManipulator.addDaysToDate()).toBe("05-12-2022");
         });
-        it("Should add 12 days when current date is 02/25/2022 and return 03/09/2023 when this date is in the USA format", () => {
+        fit("Should add 12 days when current date is 02/25/2022 and return 03/09/2023 when this date is in the USA format", () => {
             dateManipulator.parameters.usa = true;
             dateManipulator.parameters.sumDay = 12;
-            dateManipulator.parameters.fullDate = "02-25-2022";
-            expect(dateManipulator.addDaysToDate()).toBe("03-09-2022");
+            dateManipulator.parameters.fullDate = "2022-02-25";
+            expect(dateManipulator.addDaysToDate()).toBe("2022-03-09");
         });
         it("Should add a specified value into the month and return the new value when date is in the USA format", () => {
             dateManipulator.parameters.usa = true;
             dateManipulator.parameters.sumMonth = 5;
-            dateManipulator.parameters.fullDate = "05-07-2022";
-            expect(dateManipulator.addMonthsToDate()).toBe("10-07-2022");
+            dateManipulator.parameters.fullDate = "2022-05-07";
+            expect(dateManipulator.addMonthsToDate()).toBe("2022-10-07");
         });
         it("Should add 5 months when month is equal 11 and return month equal 04 and one more year in the USA format", () => {
             dateManipulator.parameters.usa = true;
             dateManipulator.parameters.sumMonth = 5;
-            dateManipulator.parameters.fullDate = "11-08-2022";
-            expect(dateManipulator.addMonthsToDate()).toBe("04-08-2023");
+            dateManipulator.parameters.fullDate = "2022-11-08";
+            expect(dateManipulator.addMonthsToDate()).toBe("2023-04-08");
         });
         it("Should add 12 months and add one more year in the USA format", () => {
             dateManipulator.parameters.usa = true;
             dateManipulator.parameters.sumMonth = 12;
-            dateManipulator.parameters.fullDate = "11-08-2022";
-            expect(dateManipulator.addMonthsToDate()).toBe("11-08-2023");
+            dateManipulator.parameters.fullDate = "2022-11-08";
+            expect(dateManipulator.addMonthsToDate()).toBe("2023-11-08");
         });
         it("Should add 1 month when the current mmonth has 31 days and return the date with the last day of the next month if this has 30 days in the USA format", () => {
             dateManipulator.parameters.usa = true;
             dateManipulator.parameters.sumMonth = 1;
-            dateManipulator.parameters.fullDate = "05-31-2022";
-            expect(dateManipulator.addMonthsToDate()).toBe("06-30-2022");
+            dateManipulator.parameters.fullDate = "2022-05-31";
+            expect(dateManipulator.addMonthsToDate()).toBe("2022-06-30");
         });
     });
     describe("Tests for Brazil date format", () => {
@@ -61,9 +61,9 @@ describe("Date Manipulator Tests", () => {
         });
         it("Should add a specified value into the year and return the new value when date is in the Brazilian format", () => {
             dateManipulator.parameters.brazil = true;
-            dateManipulator.parameters.fullDate = "07-05-2022";
+            dateManipulator.parameters.fullDate = "2022-07-05";
             dateManipulator.parameters.sumYear = 5;
-            expect(dateManipulator.addYearsToDate()).toBe("07-05-2027");
+            expect(dateManipulator.addYearsToDate()).toBe("2027-07-05");
         });
         it("Should add a specified value into the day and return the new value when date is in the Brazilian format", () => {
             dateManipulator.parameters.brazil = true;

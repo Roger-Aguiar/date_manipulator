@@ -27,8 +27,10 @@ brazil.parameters.sumYear = 3;
 console.log(`3 more years: ${brazil.addYearsToDate()}`);
 //It adds 5 days - USA
 console.log("\nIt adds 5 days - USA");
-usa.parameters.sumDay = 5;
-console.log(`Current date: ${currentUSAdate}`);
+usa.parameters.sumDay = 12;
+let usaDate = "2022-02-25";
+usa.parameters.fullDate = usaDate;
+console.log(`Current date: ${usa.parameters.fullDate}`);
 console.log(`5 more days: ${usa.addDaysToDate()}`);
 //It adds 5 days - Brazil
 console.log("\nIt adds 5 days - Brazil");
