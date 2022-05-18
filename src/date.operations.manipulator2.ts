@@ -24,8 +24,8 @@ export class DateManipulator {
 
   addYearsToDate(): string{    
     this.fullDateSplit = this.parameters.fullDate.split(this.characters);
-    return this.parameters.usa == true ? `${this.fullDateSplit[0]}-${this.fullDateSplit[1]}-${(+this.fullDateSplit[2] + this.parameters.sumYear).toString()}` :
-                                         `${(+this.fullDateSplit[0] + this.parameters.sumYear).toString()}-${this.fullDateSplit[1]}-${this.fullDateSplit[2]}`;     
+    return this.parameters.usa == true ? `${(+this.fullDateSplit[0] + this.parameters.sumYear).toString()}-${this.fullDateSplit[1]}-${this.fullDateSplit[2]}` :
+                                         `${this.fullDateSplit[0]}-${this.fullDateSplit[1]}-${(+this.fullDateSplit[2] + this.parameters.sumYear).toString()}`;     
   }
 
   addMonthsToDate(): string{

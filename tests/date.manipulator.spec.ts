@@ -16,8 +16,8 @@ describe("Date Manipulator Tests", () => {
     it("Should add a specified value into the year and return the new value when date is in the USA format", () => {
       dateManipulator.parameters.usa = true;
       dateManipulator.parameters.sumYear = 5;
-      dateManipulator.parameters.fullDate = "05-07-2022";
-      expect(dateManipulator.addYearsToDate()).toBe("05-07-2027");
+      dateManipulator.parameters.fullDate = "2022-05-07";
+      expect(dateManipulator.addYearsToDate()).toBe("2027-05-07");
     });
 
     it("Should add a specified value into the day and return the new value when date is in the USA format", () => {
@@ -64,16 +64,16 @@ describe("Date Manipulator Tests", () => {
   });
 
   describe("Tests for Brazil date format", () => {
-    it("Should return a new date in the USA format", () => {
+    it("Should return a new date in Brazil format", () => {
       dateManipulator.parameters.brazil = true;
       expect(dateManipulator.getNewDate()).not.toBeNull();
     });
 
     it("Should add a specified value into the year and return the new value when date is in the Brazilian format", () => {
       dateManipulator.parameters.brazil = true;
-      dateManipulator.parameters.fullDate = "2022-07-05";
+      dateManipulator.parameters.fullDate = "07-05-2022";
       dateManipulator.parameters.sumYear = 5
-      expect(dateManipulator.addYearsToDate()).toBe("2027-07-05");
+      expect(dateManipulator.addYearsToDate()).toBe("07-05-2027");
     });
 
     it("Should add a specified value into the day and return the new value when date is in the Brazilian format", () => {

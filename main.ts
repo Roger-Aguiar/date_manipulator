@@ -26,14 +26,19 @@ console.log(`3 more years: ${usa.addYearsToDate()}`);
 //It adds one more year - Brazil
 console.log("\nIt adds 3 years - Brazil");
 console.log(`Current date: ${currentBrDate}`);
+brazil = new DateManipulator();
 //It sets the parameters
 brazil.parameters.fullDate = currentBrDate;
 brazil.parameters.sumYear = 3;
+usa.parameters.usa = false;
 console.log(`3 more years: ${brazil.addYearsToDate()}`);
 
 //It adds 5 days - USA
 console.log("\nIt adds 5 days - USA");
+usa = new DateManipulator();
 usa.parameters.sumDay = 5;
+usa.parameters.usa = true;
+usa.parameters.fullDate = currentUSAdate;
 console.log(`Current date: ${currentUSAdate}`);
 console.log(`5 more days: ${usa.addDaysToDate()}`);
 
