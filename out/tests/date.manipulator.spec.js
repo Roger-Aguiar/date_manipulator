@@ -20,10 +20,10 @@ describe("Date Manipulator Tests", () => {
         it("Should add a specified value into the day and return the new value when date is in the USA format", () => {
             dateManipulator.parameters.usa = true;
             dateManipulator.parameters.sumDay = 5;
-            dateManipulator.parameters.fullDate = "05-07-2022";
-            expect(dateManipulator.addDaysToDate()).toBe("05-12-2022");
+            dateManipulator.parameters.fullDate = "2022-05-07";
+            expect(dateManipulator.addDaysToDate()).toBe("2022-05-12");
         });
-        fit("Should add 12 days when current date is 02/25/2022 and return 03/09/2023 when this date is in the USA format", () => {
+        it("Should add 12 days when current date is 02/25/2022 and return 03/09/2023 when this date is in the USA format", () => {
             dateManipulator.parameters.usa = true;
             dateManipulator.parameters.sumDay = 12;
             dateManipulator.parameters.fullDate = "2022-02-25";

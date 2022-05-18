@@ -1,6 +1,6 @@
 {
   "name": "date_operations_manipulator",
-  "version": "1.0.4",
+  "version": "1.0.9",
   "description": "This package contains methods to manipulate operations with date.",
   "main": "index.js",
   "scripts": {

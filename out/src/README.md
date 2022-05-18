@@ -6,7 +6,7 @@ First of all, create a package.json:<br />
 npm init -y<br />
 
 Install the package:<br />
-npm i --save-dev date_operations_manipulator2<br />
+npm i date_operations_manipulator2<br />
 
 Run the following command:<br />
 npm install @types/node --save-dev<br />
