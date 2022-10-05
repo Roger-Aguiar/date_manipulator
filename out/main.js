@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const date_operations_manipulator2_1 = require("./src/date.operations.manipulator2");
-let usa = new date_operations_manipulator2_1.DateManipulator();
-let brazil = new date_operations_manipulator2_1.DateManipulator();
+const dateOperationsManipulator2 = require("./src/date.operations.manipulator2");
+let usa = new dateOperationsManipulator2.DateManipulator();
+let brazil = new dateOperationsManipulator2.DateManipulator();
 //It sets the parameters to generate a new USA date format
 usa.parameters.usa = true;
 //It sets the parameters to generate a new Brazilian date format
@@ -21,7 +21,7 @@ console.log(`3 more years: ${usa.addYearsToDate()}`);
 //It adds one more year - Brazil
 console.log("\nIt adds 3 years - Brazil");
 console.log(`Current date: ${currentBrDate}`);
-brazil = new date_operations_manipulator2_1.DateManipulator();
+brazil = new dateOperationsManipulator2.DateManipulator();
 //It sets the parameters
 brazil.parameters.fullDate = currentBrDate;
 brazil.parameters.sumYear = 3;
@@ -29,7 +29,7 @@ usa.parameters.usa = false;
 console.log(`3 more years: ${brazil.addYearsToDate()}`);
 //It adds 5 days - USA
 console.log("\nIt adds 5 days - USA");
-usa = new date_operations_manipulator2_1.DateManipulator();
+usa = new dateOperationsManipulator2.DateManipulator();
 usa.parameters.sumDay = 5;
 usa.parameters.usa = true;
 usa.parameters.fullDate = currentUSAdate;

@@ -10,7 +10,7 @@ class DateManipulator {
         this.outputDate = "";
     }
     getNewDate() {
-        this.month = this.date.getMonth() < 10 ? "0" + (this.date.getMonth() + 1).toString() : this.date.getMonth().toString();
+        this.month = this.date.getMonth() < 9 ? "0" + (this.date.getMonth() + 1).toString() : (this.date.getMonth() + 1).toString();
         this.day = this.date.getDate() < 10 ? "0" + this.date.getDate().toString() : this.date.getDate().toString();
         this.year = this.date.getFullYear().toString();
         this.fullDate = this.parameters.usa == true ? `${this.year}-${this.month}-${this.day}` : `${this.day}-${this.month}-${this.year}`;
