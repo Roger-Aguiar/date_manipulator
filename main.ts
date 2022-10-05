@@ -1,7 +1,7 @@
-import { DateManipulator } from "./src/date.operations.manipulator2";
+import * as dateOperationsManipulator2 from "./src/date.operations.manipulator2";
 
-let usa = new DateManipulator();
-let brazil = new DateManipulator();
+let usa = new dateOperationsManipulator2.DateManipulator();
+let brazil = new dateOperationsManipulator2.DateManipulator();
 
 //It sets the parameters to generate a new USA date format
 usa.parameters.usa = true;
@@ -26,7 +26,7 @@ console.log(`3 more years: ${usa.addYearsToDate()}`);
 //It adds one more year - Brazil
 console.log("\nIt adds 3 years - Brazil");
 console.log(`Current date: ${currentBrDate}`);
-brazil = new DateManipulator();
+brazil = new dateOperationsManipulator2.DateManipulator();
 //It sets the parameters
 brazil.parameters.fullDate = currentBrDate;
 brazil.parameters.sumYear = 3;
@@ -35,7 +35,7 @@ console.log(`3 more years: ${brazil.addYearsToDate()}`);
 
 //It adds 5 days - USA
 console.log("\nIt adds 5 days - USA");
-usa = new DateManipulator();
+usa = new dateOperationsManipulator2.DateManipulator();
 usa.parameters.sumDay = 5;
 usa.parameters.usa = true;
 usa.parameters.fullDate = currentUSAdate;
